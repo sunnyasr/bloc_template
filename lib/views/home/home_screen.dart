@@ -4,6 +4,7 @@ import 'package:bloc_course/config/routes/routes_name.dart';
 import 'package:bloc_course/main.dart';
 import 'package:bloc_course/services/storage/local_storage.dart';
 import 'package:bloc_course/utils/enums.dart';
+import 'package:bloc_course/views/home/widgets/movies_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -60,22 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Center(child: Text('No data found'));
                 }
 
-                final moviesList = state.moviesList.data!;
-
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: moviesList.data.length,
-                  itemBuilder: (context, index) {
-                    var movie = moviesList.data[index];
-                    return Card(
-                      child: ListTile(
-                        title: Text(movie.firstName.toString()),
-                        subtitle: Text(movie.email.toString()),
-                        trailing: Text(movie.id.toString()),
-                      ),
-                    );
-                  },
-                );
+                return MoviesList();
               default:
                 return SizedBox();
             }
